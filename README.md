@@ -41,17 +41,17 @@ You can also see the help for other information:
 
 ```
 $ python image_sequencer.py --help
-usage: image_sequencer.py [-h] [--fps FPS] [--output OUTPUT] [--input INPUT] [--naturalsort NATURALSORT]
+usage: image_sequencer.py [-h] [--fps FPS] [--output OUTPUT] [--input INPUT] [--stringsort]
 
 Process image files into a video.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --fps FPS             How many frames per second
-  --output OUTPUT       Output filename
-  --input INPUT         Input directory
-  --naturalsort NATURALSORT
-                        Sort integers in filenames naturally instead of using string sorting.
+  -h, --help       show this help message and exit
+  --fps FPS        How many frames per second
+  --output OUTPUT  Output filename
+  --input INPUT    Input directory
+  --stringsort     Sort filenames based on string values rather than integers.
+
 ```
 
 ## Note on how filenames are sorted
