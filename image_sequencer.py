@@ -1,10 +1,15 @@
 """Small script to make video files from a sequence of image files"""
 
+import argparse
 from pathlib import Path
 import moviepy.video.io.ImageSequenceClip
 
+parser = argparse.ArgumentParser(description='Process image files into a video')
+parser.add_argument("--fps", type=float, help="How many frames per second", default=1)
+args = parser.parse_args()
+
 image_folder: Path = Path('test')
-fps: int = 1
+fps: float = args.fps
 
 image_files = [str(img) for img in image_folder.glob("*.png")]
 
