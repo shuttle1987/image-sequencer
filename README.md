@@ -53,3 +53,36 @@ optional arguments:
   --naturalsort NATURALSORT
                         Sort integers in filenames naturally instead of using string sorting.
 ```
+
+## Note on how filenames are sorted
+
+By default filenames sort based on the numbers in them instead of sorting on the strings. Imagine you had a number of files like `1.png`, `2.png`, `3.png`.... `12.png` in `test` directory. In this case sorting with natural sort gives you the following order of images in the output video:
+
+```
+$ python image_sequencer.py --fps 1  --input test --output testsorting.mp4
+Found 12 images to process
+[PosixPath('test/8.png'), PosixPath('test/10.png'), PosixPath('test/5.png'), PosixPath('test/9.png'), PosixPath('test/3.png'), PosixPath('test/1.png'), PosixPath('test/12.png'), PosixPath('test/2.png'), PosixPath('test/11.png'), PosixPath('test/4.png'), PosixPath('test/7.png'), PosixPath('test/6.png')]
+Sorting images...
+['test/1.png', 'test/2.png', 'test/3.png', 'test/4.png', 'test/5.png', 'test/6.png', 'test/7.png', 'test/8.png', 'test/9.png', 'test/10.png', 'test/11.png', 'test/12.png']
+Moviepy - Building video testsorting.mp4.
+Moviepy - Writing video testsorting.mp4
+
+Moviepy - Done !                                                                                                                                                            
+Moviepy - video ready testsorting.mp4
+```
+
+But you can sort based on the strings values for the filenames if you want, but if you have numbers you'll see an ordering that might not be what you expect:
+
+```
+$ python image_sequencer.py --fps 1 --stringsort --input test --output testsorting.mp4
+Found 12 images to process
+[PosixPath('test/8.png'), PosixPath('test/10.png'), PosixPath('test/5.png'), PosixPath('test/9.png'), PosixPath('test/3.png'), PosixPath('test/1.png'), PosixPath('test/12.png'), PosixPath('test/2.png'), PosixPath('test/11.png'), PosixPath('test/4.png'), PosixPath('test/7.png'), PosixPath('test/6.png')]
+Sorting images...
+Warning natural integer sorting is not being used, numbers may sort in strange order
+['test/1.png', 'test/10.png', 'test/11.png', 'test/12.png', 'test/2.png', 'test/3.png', 'test/4.png', 'test/5.png', 'test/6.png', 'test/7.png', 'test/8.png', 'test/9.png']
+Moviepy - Building video testsorting.mp4.
+Moviepy - Writing video testsorting.mp4
+
+Moviepy - Done !                                                                                                                                                            
+Moviepy - video ready testsorting.mp4
+```

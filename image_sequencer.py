@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(description='Process image files into a video.'
 parser.add_argument("--fps", type=float, help="How many frames per second", default=1)
 parser.add_argument("--output", type=str, help="Output filename", default='my_video.mp4')
 parser.add_argument("--input", type=str, help="Input directory", default='input-images')
-parser.add_argument("--naturalsort", type=bool, help="Sort integers in filenames naturally instead of using string sorting.", default=True)
+parser.add_argument("--stringsort", help="Sort filenames based on string values rather than integers.", action='store_true')
 
 args = parser.parse_args()
 
@@ -28,7 +28,7 @@ def sort_filename_by_number(f_name: Path):
 image_folder: Path = Path(args.input)
 fps: float = args.fps
 output_filename = args.output
-natural_int_sorting: bool = args.naturalsort
+stringsort: bool = args.stringsort
 
 image_files = [img for img in image_folder.glob("*.png")]
 
@@ -39,7 +39,7 @@ print(f"Found {len(image_files)} images to process")
 print(image_files)
 
 print("Sorting images...")
-if not natural_int_sorting:
+if stringsort:
     image_files = [str(img) for img in image_folder.glob("*.png")]
     print("Warning natural integer sorting is not being used, numbers may sort in strange order")
     image_files.sort()
