@@ -9,7 +9,7 @@ import moviepy.video.io.ImageSequenceClip
 parser = argparse.ArgumentParser(description='Process image files into a video.')
 parser.add_argument("--fps", type=float, help="How many frames per second", default=1)
 parser.add_argument("--output", type=str, help="Output filename", default='my_video.mp4')
-parser.add_argument("--input", type=str, help="Input directory", default='input-images')
+parser.add_argument("--input", type=str, help="Input directory", default='input_images')
 parser.add_argument("--stringsort", help="Sort filenames based on string values rather than integers.", action='store_true')
 
 args = parser.parse_args()
