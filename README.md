@@ -31,11 +31,13 @@ python3 -m pip install -r requirements.txt
 
 ## Example usage
 
-Invoke the script with the parameters you want:
+Create a folder where you have your images that you want to put in a sequence. For example if you had a directory called `my_images_directory` that had a number of `.png` files in it like `1.png`, `2.png`, `3.png`, etc and you wanted 10 frames per second you would invoke the script with the parameters you want:
 
 ```
 python image_sequencer.py --fps 10 --input my_images_directory --output my_video.mp4
 ```
+
+This will generate a video in the file `my_video.mp4`
 
 You can also see the help for other information:
 
